@@ -4,9 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Personal Portfolio Website">
-    <title>Jane Doe | Web Developer</title>
+    <title>Sanskar | Web Developer</title>
     <style>
-        /* --- CSS Variables for Easy Theming --- */
         :root {
             --primary-color: #2563eb;
             --primary-hover: #1d4ed8;
@@ -18,8 +17,6 @@
             --font-sans: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
             --transition: all 0.3s ease;
         }
-
-        /* --- Reset & Base Styles --- */
         * {
             margin: 0;
             padding: 0;
@@ -52,8 +49,7 @@
             height: auto;
             display: block;
         }
-
-        /* --- Reusable Components --- */
+        
         .container {
             width: 90%;
             max-width: 1100px;
@@ -115,7 +111,6 @@
             color: var(--primary-color);
         }
 
-        /* --- Hero Section --- */
         .hero {
             min-height: 80vh;
             display: flex;
@@ -138,14 +133,12 @@
             margin-inline: auto;
         }
 
-        /* --- Projects Section --- */
         .projects {
             padding: 5rem 0;
         }
 
         .project-grid {
             display: grid;
-            /* Responsive Grid: Auto-fits columns that are at least 300px wide */
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2rem;
         }
@@ -166,7 +159,7 @@
         .project-image {
             width: 100%;
             height: 200px;
-            background-color: #cbd5e1; /* Placeholder color */
+            background-color: #cbd5e1; 
             object-fit: cover;
         }
 
@@ -184,7 +177,6 @@
             margin-bottom: 1rem;
         }
 
-        /* --- About Section --- */
         .about {
             background-color: var(--card-bg);
             padding: 5rem 0;
@@ -204,7 +196,6 @@
             color: var(--text-muted);
         }
 
-        /* --- Contact Section --- */
         .contact {
             padding: 5rem 0;
             text-align: center;
@@ -216,7 +207,6 @@
             color: var(--text-muted);
         }
 
-        /* --- Footer --- */
         footer {
             background-color: #0f172a;
             color: #f8fafc;
@@ -225,7 +215,6 @@
             margin-top: auto;
         }
 
-        /* --- Responsive Media Queries --- */
         @media (max-width: 768px) {
             .navbar {
                 flex-direction: column;
@@ -250,11 +239,10 @@
 </head>
 <body>
 
-    <!-- Header & Semantic Navigation -->
     <header>
         <div class="container">
             <nav class="navbar" aria-label="Main Navigation">
-                <a href="#" class="logo">Jane Doe</a>
+                <a href="#" class="logo">Sanskar</a>
                 <ul class="nav-links">
                     <li><a href="#about">About</a></li>
                     <li><a href="#projects">Work</a></li>
@@ -264,36 +252,30 @@
         </div>
     </header>
 
-    <!-- Main Content Area -->
     <main>
-        <!-- Hero Section -->
         <section class="hero" id="home" aria-label="Introduction">
             <div class="container">
-                <h1>Hi, I'm Jane Doe.<br>I build things for the web.</h1>
-                <p>I am a frontend developer specializing in building exceptional digital experiences that are accessible, responsive, and user-friendly.</p>
+                <h1>Hi, I'm Sanskar.<br>I build things for the web.</h1>
+                <p>I am a frontend developer who builds digital experiences that are accessible, responsive, and user-friendly.</p>
                 <a href="#projects" class="btn">View My Work</a>
             </div>
         </section>
 
-        <!-- About Section -->
         <section class="about" id="about" aria-labelledby="about-title">
             <div class="container">
                 <h2 class="section-title" id="about-title">About Me</h2>
                 <div class="about-content">
-                    <p>I'm a passionate web developer with over 5 years of experience creating interactive and responsive websites. I love turning complex problems into simple, beautiful, and intuitive interface designs. When I'm not coding, you'll find me hiking, reading, or exploring new coffee shops.</p>
+                    <p>I'm a passionate web developer who wants to learn and explore more in this field. I love turning complex problems into simple, beautiful, and intuitive interface designs.</p>
                 </div>
             </div>
         </section>
 
-        <!-- Projects Portfolio Section -->
         <section class="projects" id="projects" aria-labelledby="projects-title">
             <div class="container">
                 <h2 class="section-title" id="projects-title">Selected Projects</h2>
                 
                 <div class="project-grid">
-                    <!-- Semantic Article for a discrete piece of content -->
                     <article class="project-card">
-                        <!-- Replace src with your actual image -->
                         <img src="https://via.placeholder.com/400x250" alt="E-commerce Dashboard" class="project-image">
                         <div class="project-content">
                             <h3>E-Commerce Dashboard</h3>
@@ -323,20 +305,18 @@
             </div>
         </section>
 
-        <!-- Contact Section -->
         <section class="contact" id="contact" aria-labelledby="contact-title">
             <div class="container">
                 <h2 class="section-title" id="contact-title">Get In Touch</h2>
-                <p>I'm currently looking for new opportunities. Whether you have a question or just want to say hi, I'll try my best to get back to you!</p>
-                <a href="mailto:hello@example.com" class="btn">Say Hello</a>
+                <p>I'm currently looking for new opportunities.</p>
+                <a href="mailto:sanskar@gmail.com" class="btn">Say Hello</a>
             </div>
         </section>
     </main>
 
-    <!-- Footer -->
     <footer>
         <div class="container">
-            <p>&copy; 2026 Jane Doe. Built from scratch with HTML & CSS.</p>
+            <p>&copy; 2026</p>
         </div>
     </footer>
 

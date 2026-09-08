@@ -1,0 +1,101 @@
+Full Stack Architecture Proposal
+To support a dynamic, scalable portfolio website that manages profiles for multiple employees, a MERN stack (MongoDB, Express.js, React.js, Node.js) is highly effective. This architecture separates concerns into a standard three-tier model:
+
+Client Tier (Frontend - React.js): A Single Page Application (SPA) framework like React handles dynamic UI updates smoothly. It allows the team to build reusable components (e.g., project cards, skill badges) that can be populated with different employee data.
+
+Application Tier (Backend - Node.js & Express.js): A RESTful API built with Express handles routing, user authentication, and data fetching. It serves as the intermediary between the client and the database, processing requests for employee portfolios (GET /api/employees/:id).
+
+Data Tier (Database - MongoDB): A NoSQL database is ideal for portfolios because employee data structures can vary widely. One employee might have a list of publications, while another has a gallery of design files. MongoDB’s JSON-like document structure naturally maps to frontend JavaScript objects.
+
+Hosting & Deployment: A reverse proxy setup using Nginx on an Ubuntu Linux server. Nginx serves the static React build files and routes API requests to the Node.js backend running via PM2 (a process manager).
+
+Front-End Technologies and Page Structure
+The foundation of the frontend will rely on HTML5 and CSS3, enhanced by a utility-first framework like Tailwind CSS or scoped CSS modules to prevent styling conflicts among the four developers.
+
+Justification for the Semantic Page Structure:
+A strictly semantic HTML structure is critical for employee portfolios to ensure high SEO rankings (making employees discoverable) and accessibility (screen-reader compatibility).
+
+<header>: Contains the startup's global branding and primary navigation (<nav>).
+
+<main>: Wraps the unique content of the employee's portfolio to signify the document's core topic.
+
+<section id="hero">: Features the employee’s name, role, and a brief value proposition. Using an <h1> here establishes the page's primary hierarchy.
+
+<section id="skills"> & <section id="projects">: Divides content logically. Using <article> tags for individual project cards ensures each project is treated as a self-contained, syndicatable piece of content.
+
+<footer>: Contains contact links, social profiles (LinkedIn, GitHub), and copyright information.
+
+CSS Grid will be used for the overall macro-layout (e.g., sidebars vs. main content areas), while Flexbox will handle micro-layouts (e.g., aligning icons and text within buttons or project cards).
+
+Git Branching Strategy
+For a collaborative team of four developers, a modified GitFlow or Feature Branch Workflow provides the right balance of structure and agility without unnecessary overhead.
+
+Branch Topology:
+
+main (Production): The source of truth. Code here is always stable, tested, and live on the server. Direct commits are forbidden.
+
+develop (Integration): The active development branch. All completed features are merged here for testing before release.
+
+feature/<feature-name>: Created off develop by individual developers (e.g., feature/auth-login or feature/project-carousel).
+
+hotfix/<issue-name>: Created directly off main to patch critical live bugs, then merged back into both main and develop.
+
+Team Workflow:
+
+A developer pulls the latest develop branch and creates a new feature/ branch.
+
+Upon completing the feature, the developer pushes the branch to the remote repository and opens a Pull Request (PR) against develop.
+
+At least one other developer must review and approve the PR (Code Review) before it is merged.
+
+Once a stable release is ready, develop is merged into main and tagged with a version number (e.g., v1.1.0).
+
+UNIX CLI Server Management
+To manually set up and manage the project directory on a standard Linux server, the following command sequence establishes a secure, organized environment.
+
+1. Directory Setup and Repository Cloning
+Create the web directory, assign proper ownership, and pull the code.
+
+Bash
+# Create the project directory structure
+sudo mkdir -p /var/www/employee-portfolio
+
+# Change ownership to the current user to allow git cloning without sudo
+sudo chown -R $USER:$USER /var/www/employee-portfolio
+
+# Navigate to the directory
+cd /var/www/employee-portfolio
+
+# Clone the repository into the current directory
+git clone https://github.com/startup/employee-portfolio.git .
+2. Environment Configuration
+Securely create the environment variables required for database connections and API keys.
+
+Bash
+# Create the environment file
+touch .env
+
+# Open the file in a text editor to add credentials (e.g., DB_URI, PORT)
+nano .env
+
+# Restrict read/write access to the file owner for security
+chmod 600 .env
+3. Dependency Installation and Process Management
+Install required packages and run the application using a process manager to ensure it restarts upon failure.
+
+Bash
+# Install Node.js dependencies
+npm install
+
+# Build the production assets (if using a build step like Next.js or Webpack)
+npm run build
+
+# Install PM2 (Process Manager) globally to keep the app running in the background
+sudo npm install -g pm2
+
+# Start the application and name the process
+pm2 start server.js --name "portfolio-app"
+
+# Configure PM2 to start automatically on server reboot
+pm2 startup
+pm2 save

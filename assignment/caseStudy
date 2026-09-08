@@ -1,4 +1,4 @@
-Full Stack Architecture Proposal
+Case Study - Full Stack Architecture Proposal :-
 To support a dynamic, scalable portfolio website that manages profiles for multiple employees, a MERN stack (MongoDB, Express.js, React.js, Node.js) is highly effective. This architecture separates concerns into a standard three-tier model:
 
 Client Tier (Frontend - React.js): A Single Page Application (SPA) framework like React handles dynamic UI updates smoothly. It allows the team to build reusable components (e.g., project cards, skill badges) that can be populated with different employee data.
